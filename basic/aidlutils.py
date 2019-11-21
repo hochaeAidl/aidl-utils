@@ -4,10 +4,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 #from tensorflow.keras.datasets import mnist
 
+'''
 print("Module Loaded.")
 print("NumPy Version :{}".format(np.__version__))
 #print("TensorFlow Version :{}".format(tf.__version__))
 print("Matplotlib Version :{}".format(plt.matplotlib.__version__))
+'''
 
 # Accuracy
 def Accuracy(y:np.ndarray, t:np.ndarray)->np.float32:
@@ -30,3 +32,20 @@ def Make_Result_Plot(suptitle:str, data:np.ndarray, label:np.ndarray, y_max:np.n
         ax_result[idx//5][idx%5].set_title("test_data[{}] (label : {} / y : {})".format(idx, 
                                                                     label[idx], y_max[idx]))
 
+
+'''
+    show image function
+    input: 
+        x: np.ndarray image data
+        y: display image number
+'''
+def show_img(x, y=16):
+    size_img = 28
+    plt.figure(figsize=(8,7))
+    num_images = y
+    n_samples = x.shape[0]
+    x = x.reshape(n_samples, size_img, size_img)
+    for i in range(num_images):
+        plt.subplot(4, 4, i+1)
+        plt.imshow(x[i], cmap='gray')
+    plt.show()
